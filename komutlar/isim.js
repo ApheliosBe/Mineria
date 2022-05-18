@@ -1,0 +1,6 @@
+module.exports = {  
+name:"isim",  
+type:"interaction",  
+prototype:"slash",  
+code:`  
+$changeNickname[$slashOption[kullanıcı];$slashOption[isim]]  $interactionReply[;{newEmbed:{author:$userTag[$slashOption[kullanıcı]]:$userAvatar[$slashOption[kullanıcı]]}{description:$getServerVar[tick] <@$slashOption[kullanıcı]> adlı üyenin ismi değiştirildi.\n\nEski isim: *$replaceText[*$nickname[$slashOption[kullanıcı]]*;**;*$username[$slashOption[kullanıcı]]*]*\nYeni isim: **$slashOption[isim]**}{color:F48A08}};;;;;no]  $onlyIf[$charCount[$slashOption[isim]]<=32;{"content":"$getServerVar[cross] En fazla 32 karakter girebilirsin.","options":{"interaction": true }}]  $onlyIf[$rolePosition[$highestRole[$clientID]]<=$rolePosition[$highestRole[$slashOption[kullanıcı]]];{"content":"$getServerVar[cross] Rolümden üstte/eşit birinin ismini değiştiremem.","options": {"interaction": true }}]  $onlyIf[$rolePosition[$highestRole[$authorID]]<=$rolePosition[$highestRole[$slashOption[kullanıcı]]];{"content":"$getServerVar[cross] Rolünden üstte/eşit birinin ismini değiştiremezsin.","options": {"interaction": true }}]  $onlyPerms[managenicknames;{"content":"$getServerVar[cross] Bunun için **__Kullanıcı Adlarını Yönet__** iznin olmalı.","options":{"interaction": true }}]  `  }
